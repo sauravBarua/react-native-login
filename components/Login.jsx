@@ -1,37 +1,22 @@
-import {StyleSheet, Text, View, TextInput,Pressable } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import { Link } from "react-router-native";
-const App = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import { color } from 'react-native-reanimated';
+const Login = () => {
 
- 
-  const onSubmit = () => {
-    if (password.length <= 6) {
-      alert('Password minimum 6 characters');
-    } else {
-      alert('Form submited');
-    }
-  }
   return (
     <View style={styles.container}>
       <TextInput
-        onChangeText={text => setEmail(text)}
-        value={email}
         placeholder={'Email'}
         style={styles.inputStyle}
       />
       <TextInput
-        onChangeText={value => setPassword(value)}
         placeholder={'Password'}
         style={styles.inputStyle}
-        secureTextEntry={true}
       />
-      <Pressable
-        style={styles.inputStyle}
-        onPress={onSubmit}>
-        <Text style={{ textAlign: "center" }}> login </Text>
-      </Pressable>
+      <Link to="/Home" style={styles.button} >
+        <Text style={styles.loginText}> login </Text>
+      </Link>
     </View>
   );
 }
@@ -50,5 +35,17 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     marginBottom: 10,
   },
+  button: {
+    width: 200,
+    marginTop: 20,
+    backgroundColor: '#20639B',
+    padding: 15,
+    borderRadius: 50,
+  },
+  loginText:{
+    textAlign: "center", 
+    color: 'white'
+
+  }
 });
-export default App;
+export default Login;
